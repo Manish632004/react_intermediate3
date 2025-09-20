@@ -5,11 +5,11 @@ import toast from 'react-hot-toast'
 
 const Navbar = (props) => {
 
-    let isLoggenIN = props.isLoggedIN;
-    let setIsLoggedIN = props.setIsLoggedIN;
+    let isLoggenIn = props.isLoggenIn;
+    let setIsLoggedIn = props.setIsLoggedIn;
 
     return (
-        <div className='bg-red-500 h-10 flex justify-evenly'>
+        <div className='bg-red-500 h-10 flex justify-evenly items-center'>
 
 
             <Link to='/'>
@@ -34,25 +34,27 @@ const Navbar = (props) => {
             {/* Login - Signup - Logout - Dashboard  */}
 
             <div className='flex ml-5 gap-3'>
-                {!isLoggenIN &&
+                {!isLoggenIn &&
                     <Link to='/login'>
                         <button>Login</button>
                     </Link>
                 }
-                {!isLoggenIN &&
+                {!isLoggenIn &&
                     <Link to='/signup' >
-                        <button onClick={() =>{
-                            setIsLoggedIN(false); toast.success("Logged Out"); }}>Signup</button>
+                        <button onClick={() => {
+                            setIsLoggedIn(false); toast.success("Logged Out");
+                        }}>Signup</button>
                     </Link>
                 }
-                {isLoggenIN &&
+                {isLoggenIn &&
                     <Link to='/'>
-                        <button onClick={() =>{
-                            setIsLoggedIN(false); toast.success("Logged Out"); }}>Logout</button>
+                        <button onClick={() => {
+                            setIsLoggedIn(false); toast.success("Logged Out");
+                        }}>Logout</button>
                     </Link>
                 }
-                
-                {isLoggenIN &&
+
+                {isLoggenIn &&
                     <Link to='/dashboard'>
                         <button>Dashboard</button>
                     </Link>
