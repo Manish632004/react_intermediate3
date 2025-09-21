@@ -6,18 +6,23 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import { useState } from "react";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
 
-  const [isLoggenIn ,setIsLoggedIn] = useState(false);
+  const [isLoggedIn ,setIsLoggedIn] = useState(false);
   return (
-    <div>
-      <Navbar isLoggenIn ={isLoggenIn} setIsLoggedIn={setIsLoggedIn}/>
+    <div className="w-screen h-screen bg-richblack-900">
+      <Navbar isLoggedIn ={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login isLoggenIn={isLoggenIn} setIsLoggedIn={setIsLoggedIn}/> } />
-        <Route path="/signup" element={<Signup isLoggenIn={isLoggenIn} setIsLoggedIn={setIsLoggedIn}/> } />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/login" element={<Login isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/> } />
+        <Route path="/signup" element={<Signup isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn}/> } />
+        <Route path="/dashboard" element={
+          <PrivateRoute isLoggedIn={isLoggedIn}>
+            <Dashboard />
+          </PrivateRoute>
+        } />
       </Routes>
     </div>
 

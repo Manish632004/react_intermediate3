@@ -5,11 +5,11 @@ import toast from 'react-hot-toast'
 
 const Navbar = (props) => {
 
-    let isLoggenIn = props.isLoggenIn;
+    let isLoggedIn = props.isLoggedIn;
     let setIsLoggedIn = props.setIsLoggedIn;
 
     return (
-        <div className='bg-red-500 h-10 flex justify-evenly items-center'>
+        <div className='text-white w-11/12 max-w-[1160px] mx-auto flex justify-between items-center py-4'>
 
 
             <Link to='/'>
@@ -17,7 +17,7 @@ const Navbar = (props) => {
             </Link>
 
             <nav >
-                <ul className='flex'>
+                <ul className='flex text-richblack-100 gap-x-6'>
                     <li>
                         <Link to='/'>Home</Link>
                     </li>
@@ -33,30 +33,30 @@ const Navbar = (props) => {
 
             {/* Login - Signup - Logout - Dashboard  */}
 
-            <div className='flex ml-5 gap-3'>
-                {!isLoggenIn &&
+            <div className='flex gap-x-4 items-center'>
+                {!isLoggedIn &&
                     <Link to='/login'>
-                        <button>Login</button>
+                        <button className='bg-richblack-800 text-richblack-100 py-[8px] px-[12px] rounded-[8px] border border-richblack-700'>Login</button>
                     </Link>
                 }
-                {!isLoggenIn &&
+                {!isLoggedIn &&
                     <Link to='/signup' >
-                        <button onClick={() => {
+                        <button className='bg-richblack-800 text-richblack-100 py-[8px] px-[12px] rounded-[8px] border border-richblack-700' onClick={() => { 
                             setIsLoggedIn(false); toast.success("Logged Out");
                         }}>Signup</button>
                     </Link>
                 }
-                {isLoggenIn &&
+                {isLoggedIn &&
                     <Link to='/'>
-                        <button onClick={() => {
+                        <button className='bg-richblack-800 text-richblack-100 py-[8px] px-[12px] rounded-[8px] border border-richblack-700' onClick={() => {
                             setIsLoggedIn(false); toast.success("Logged Out");
                         }}>Logout</button>
                     </Link>
                 }
 
-                {isLoggenIn &&
+                {isLoggedIn &&
                     <Link to='/dashboard'>
-                        <button>Dashboard</button>
+                        <button className='bg-richblack-800 text-richblack-100 py-[8px] px-[12px] rounded-[8px] border border-richblack-700'>Dashboard</button>
                     </Link>
                 }
             </div>
